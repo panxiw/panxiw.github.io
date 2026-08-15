@@ -31,6 +31,10 @@ html:not([data-theme='dark']) body::before {
   z-index: -2;
   background: rgba(243, 236, 221, .72);
   pointer-events: none;
+  transition: background 2.8s ease;
+}
+html:not([data-theme='dark']) body.magic-on::before {
+  background: rgba(222, 209, 187, .90);
 }
 html[data-theme='dark'] body::before {
   content: '';
@@ -39,37 +43,46 @@ html[data-theme='dark'] body::before {
   z-index: -2;
   background: rgba(7, 10, 9, .88);
   pointer-events: none;
+  transition: background 2.8s ease;
+}
+/* 激活魔法阵时：整个背景压暗，金色更加醒目 */
+html[data-theme='dark'] body.magic-on::before {
+  background: rgba(2, 4, 3, .96);
 }
 
-/* ---------- 沉睡魔法阵（背景线稿，极慢旋转） ---------- */
-/* 外圈魔法阵：顺时针缓转 */
+/* ---------- 沉睡魔法阵（背景线稿，四层同心，极慢旋转） ---------- */
+/* 第4层·珍珠外圈：顺时针缓转；激活时最后点亮 */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url('../img/magic-circle-outer.svg') center/80vmin no-repeat;
+  background: url('../img/magic-circle-band-d.svg') center/80vmin no-repeat;
   opacity: calc(.24 + var(--circle-glow, 0) * .20);
   filter: drop-shadow(0 0 6px rgba(201, 162, 39, .30));
   animation: magic-spin-cw 240s linear infinite;
-  transition: filter 2.5s ease;
+  transition: filter 1.2s ease 1.5s;
 }
 @keyframes magic-spin-cw {
   to { transform: rotate(360deg); }
 }
-/* 内圈魔法阵：逆时针反转 */
-#magic-inner {
+/* 第1~3层（核心阵眼 → 符文环 → 星纹层）：逆时针同步反转，激活时由内而外依次点亮 */
+#magic-a, #magic-b, #magic-c {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url('../img/magic-circle-inner.svg') center/80vmin no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80vmin;
   opacity: calc(.28 + var(--circle-glow, 0) * .22);
   filter: drop-shadow(0 0 6px rgba(201, 162, 39, .32));
   animation: magic-spin-ccw 180s linear infinite;
-  transition: filter 2.5s ease;
 }
+#magic-a { background-image: url('../img/magic-circle-band-a.svg'); transition: filter 1.2s ease .0s; }
+#magic-b { background-image: url('../img/magic-circle-band-b.svg'); transition: filter 1.2s ease .5s; }
+#magic-c { background-image: url('../img/magic-circle-band-c.svg'); transition: filter 1.2s ease 1.0s; }
 @keyframes magic-spin-ccw {
   to { transform: rotate(-360deg); }
 }
@@ -295,7 +308,9 @@ html.js .article-sort-item {
 
 /* ---------- 魔法阵激活：暗金慢慢变亮金，如水流动 ---------- */
 body.magic-on::after,
-body.magic-on #magic-inner {
+body.magic-on #magic-a,
+body.magic-on #magic-b,
+body.magic-on #magic-c {
   filter: drop-shadow(0 0 14px rgba(233, 196, 106, .65)) sepia(.5) saturate(2.3) brightness(1.45) hue-rotate(-10deg);
 }
 body.magic-on #magic-glow {
@@ -305,7 +320,9 @@ body.magic-on .magic-glow-spin {
   animation-duration: 3.5s;
   background: conic-gradient(from 0deg, transparent 0deg, rgba(233, 196, 106, .50) 70deg, transparent 140deg, transparent 360deg);
 }
-body.magic-on #magic-inner {
+body.magic-on #magic-a,
+body.magic-on #magic-b,
+body.magic-on #magic-c {
   animation-duration: 90s;
 }
 

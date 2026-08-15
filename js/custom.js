@@ -32,10 +32,12 @@
   if (on) document.body.classList.add('bg-mode');
   apply();
 
-  // ---- 魔法阵觉醒：内圈(反向旋转) + 金色流光层 + 滚动进度 ----
-  const inner = document.createElement('div');
-  inner.id = 'magic-inner';
-  document.body.appendChild(inner);
+  // ---- 魔法阵觉醒：三层内圈(核心/符文/星纹，反向同步旋转) + 金色流光层 + 滚动进度 ----
+  ['magic-a', 'magic-b', 'magic-c'].forEach(id => {
+    const el = document.createElement('div');
+    el.id = id;
+    document.body.appendChild(el);
+  });
 
   // ---- 魔法阵激活开关（暗金沉睡 / 亮金流动） ----
   const MAGIC_KEY = 'magic-on';
