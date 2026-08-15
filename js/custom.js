@@ -4,6 +4,8 @@
   // 极光背景层（放最底层）
   const aurora = document.createElement('div');
   aurora.id = 'aurora-bg';
+  // 首页(/)用龙壁纸，其余页面(文章/归档/标签等)用菲伦与芙莉莲
+  if (location.pathname.replace(/\\/+$/, '') === '') aurora.classList.add('home');
   document.body.insertBefore(aurora, document.body.firstChild);
 
   // 鼠标光晕跟随（平滑缓动）

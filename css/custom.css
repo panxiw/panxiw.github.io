@@ -12,10 +12,19 @@ body {
   inset: 0;
   z-index: -2;
   overflow: hidden;
-  background: linear-gradient(160deg, #eef2ff 0%, #f6f8ff 35%, #eef9ff 70%, #fdf1ff 100%);
+  background: url('../img/frieren-fern.jpg') center/cover no-repeat fixed;
+}
+/* 首页：龙壁纸 */
+#aurora-bg.home {
+  background-image: url('../img/dragon.jpg');
 }
 html[data-theme='dark'] #aurora-bg {
-  background: linear-gradient(160deg, #0b1026 0%, #101433 35%, #0d1f33 70%, #1a1030 100%);
+  background: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+              url('../img/frieren-fern.jpg') center/cover no-repeat fixed;
+}
+html[data-theme='dark'] #aurora-bg.home {
+  background-image: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+                    url('../img/dragon.jpg');
 }
 #aurora-bg::before,
 #aurora-bg::after {
@@ -25,7 +34,7 @@ html[data-theme='dark'] #aurora-bg {
   height: 60vmax;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: .5;
+  opacity: .32;
   animation: aurora-drift 22s ease-in-out infinite alternate;
 }
 #aurora-bg::before {
