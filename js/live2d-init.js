@@ -7,10 +7,10 @@ OML2D.loadOml2d({
   models: [{
     path: '/live2d/frieren/Frieren.model3.json',
     scale: 0.055,
-    position: [48, 40],
+    position: [0, 40],
     stageStyle: { width: 360, height: 520, bottom: '76px' },
     mobileScale: 0.03,
-    mobilePosition: [48, 40],
+    mobilePosition: [20, 40],
     mobileStageStyle: { width: 220, height: 300, bottom: '56px' }
   }],
   menus: {
