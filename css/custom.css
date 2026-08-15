@@ -34,7 +34,7 @@ html:not([data-theme='dark']) body::before {
   transition: background 2.8s ease;
 }
 html:not([data-theme='dark']) body.magic-on::before {
-  background: radial-gradient(ellipse at 50% 45%, rgba(233, 214, 168, .90) 0%, rgba(222, 196, 142, .92) 60%, rgba(214, 186, 132, .94) 100%);
+  background: rgba(18, 22, 26, .92);
 }
 html[data-theme='dark'] body::before {
   content: '';
@@ -47,7 +47,7 @@ html[data-theme='dark'] body::before {
 }
 /* 激活魔法阵时：背景压暗成暗金夜色（不是纯黑，带金调） */
 html[data-theme='dark'] body.magic-on::before {
-  background: radial-gradient(ellipse at 50% 45%, rgba(48, 34, 12, .86) 0%, rgba(22, 15, 6, .93) 55%, rgba(9, 7, 4, .97) 100%);
+  background: rgba(3, 5, 7, .95);
 }
 
 /* ---------- 沉睡魔法阵（内联 SVG 四层同心，颜色过渡觉醒） ---------- */
@@ -92,31 +92,32 @@ html[data-theme='dark'] body.magic-on::before {
   height: 80vmin;
   animation: magic-spin-cw 240s linear infinite;
 }
-#magic-a { transition: --g1 1.2s ease .0s, --g2 1.2s ease .0s, filter 1.2s ease .0s; }
-#magic-b { transition: --g1 1.2s ease .5s, --g2 1.2s ease .5s, filter 1.2s ease .5s; }
-#magic-c { transition: --g1 1.2s ease 1.0s, --g2 1.2s ease 1.0s, filter 1.2s ease 1.0s; }
-#magic-d { transition: --g1 1.2s ease 1.5s, --g2 1.2s ease 1.5s, filter 1.2s ease 1.5s; }
+#magic-a { transition: --g1 1.2s ease .0s, --g2 1.2s ease .0s, filter 1.2s ease .0s, opacity 1.2s ease .0s; }
+#magic-b { transition: --g1 1.2s ease .5s, --g2 1.2s ease .5s, filter 1.2s ease .5s, opacity 1.2s ease .5s; }
+#magic-c { transition: --g1 1.2s ease 1.0s, --g2 1.2s ease 1.0s, filter 1.2s ease 1.0s, opacity 1.2s ease 1.0s; }
+#magic-d { transition: --g1 1.2s ease 1.5s, --g2 1.2s ease 1.5s, filter 1.2s ease 1.5s, opacity 1.2s ease 1.5s; }
 /* 激活：亮金渐变 + 辉光微增（线条保持锐利，不糊） */
 body.magic-on #magic-a,
 body.magic-on #magic-b,
 body.magic-on #magic-c,
 body.magic-on #magic-d {
-  --g1: #e9b84a;
-  --g2: #f7d477;
-  filter: drop-shadow(0 0 4px rgba(242, 204, 112, .55)) drop-shadow(0 0 16px rgba(233, 196, 106, .20));
+  --g1: #f2c257;
+  --g2: #ffe08e;
+  opacity: calc(.80 + var(--circle-glow, 0) * .15);
+  filter: drop-shadow(0 0 4px rgba(250, 214, 120, .60)) drop-shadow(0 0 18px rgba(233, 196, 106, .22));
 }
 body.magic-on #magic-a svg,
 body.magic-on #magic-b svg,
 body.magic-on #magic-c svg {
   animation-duration: 90s;
 }
-/* 金色氛围：法阵觉醒时，背景染上一层暗金夜色的光晕 */
+/* 暗夜暗角：法阵觉醒时，四周夜色更沉，中心法阵如夜幕中的金色纹章 */
 #magic-vignette {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 45%, rgba(233, 196, 106, .18) 0%, rgba(150, 112, 34, .12) 40%, transparent 72%);
+  background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(0, 0, 0, .5) 100%);
   opacity: 0;
   transition: opacity 3s ease;
 }
