@@ -82,15 +82,25 @@ html[data-theme='dark'] body.magic-on::before {
   --g1: #a0834f;
   --g2: #d4b45f;
 }
-#magic-a svg, #magic-b svg, #magic-c svg {
+#magic-a svg {
   width: 80vmin;
   height: 80vmin;
-  animation: magic-spin-ccw 180s linear infinite;
+  animation: magic-spin-cw 60s linear infinite;
+}
+#magic-b svg {
+  width: 80vmin;
+  height: 80vmin;
+  animation: magic-spin-ccw 80s linear infinite;
+}
+#magic-c svg {
+  width: 80vmin;
+  height: 80vmin;
+  animation: magic-spin-cw 100s linear infinite;
 }
 #magic-d svg {
   width: 80vmin;
   height: 80vmin;
-  animation: magic-spin-cw 240s linear infinite;
+  animation: magic-spin-ccw 120s linear infinite;
 }
 #magic-a { transition: --g1 1.2s ease .0s, --g2 1.2s ease .0s, filter 1.2s ease .0s, opacity 1.2s ease .0s; }
 #magic-b { transition: --g1 1.2s ease .5s, --g2 1.2s ease .5s, filter 1.2s ease .5s, opacity 1.2s ease .5s; }
@@ -106,11 +116,7 @@ body.magic-on #magic-d {
   opacity: calc(.80 + var(--circle-glow, 0) * .15);
   filter: drop-shadow(0 0 4px rgba(250, 214, 120, .60)) drop-shadow(0 0 18px rgba(233, 196, 106, .22));
 }
-body.magic-on #magic-a svg,
-body.magic-on #magic-b svg,
-body.magic-on #magic-c svg {
-  animation-duration: 90s;
-}
+
 /* 暗夜暗角：法阵觉醒时，四周夜色更沉，中心法阵如夜幕中的金色纹章 */
 #magic-vignette {
   position: fixed;
