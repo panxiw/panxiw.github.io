@@ -10,10 +10,7 @@ html {
 body {
   background: #eef2ff url('../img/frieren-fern.jpg') center/cover no-repeat fixed !important;
 }
-/* 首页：龙壁纸 */
-body.home {
-  background-image: url('../img/dragon.jpg') !important;
-}
+
 /* 深色模式：暗色遮罩保证可读性 */
 html[data-theme='dark'] body::before {
   content: '';
