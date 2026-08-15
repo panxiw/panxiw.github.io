@@ -137,37 +137,53 @@ html[data-theme='dark'] #footer {
   border-top-color: rgba(255, 255, 255, .08);
 }
 
-/* ---------- 背景模式开关（隐藏文章看壁纸） ---------- */
+/* ---------- 背景模式开关（右侧设置同款风格） ---------- */
 #bg-toggle {
   position: fixed;
-  left: 16px;
-  bottom: 84px;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid rgba(99, 102, 241, .45);
-  background: rgba(255, 255, 255, .78);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  font-size: 19px;
-  line-height: 1;
+  right: 8px;
+  bottom: 200px;
+  z-index: 100;
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 5px;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  text-align: center;
+  font-size: 16px;
+  line-height: 35px;
+  border-radius: 5px;
+  border: none;
   cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 4px 16px rgba(31, 38, 135, .18);
-  transition: transform .25s ease, background .25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-#bg-toggle:hover { transform: scale(1.12) rotate(8deg); }
-#bg-toggle.active { background: rgba(99, 102, 241, .85); }
-html[data-theme='dark'] #bg-toggle {
-  background: rgba(24, 30, 56, .75);
-  border-color: rgba(129, 140, 248, .45);
+#bg-toggle i {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-html[data-theme='dark'] #bg-toggle.active { background: rgba(99, 102, 241, .8); }
+#bg-toggle:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  -webkit-transform: translateY(-1px) scale(1.02);
+  transform: translateY(-1px) scale(1.02);
+}
+#bg-toggle:hover i {
+  -webkit-animation: buttonIconBounce 0.6s ease-in-out;
+  animation: buttonIconBounce 0.6s ease-in-out;
+}
+#bg-toggle.active { color: var(--btn-hover-color); }
 
 /* 背景模式：隐藏文章、侧栏、页脚、右侧按钮，只留壁纸 */
+body.bg-mode #page-header,
+body.bg-mode #content-inner,
+body.bg-mode #footer,
+body.bg-mode #rightside {
+  display: none !important;
+}
+
 body.bg-mode #page-header,
 body.bg-mode #content-inner,
 body.bg-mode #footer,

@@ -3,17 +3,19 @@ OML2D.loadOml2d({
   initialStatus: 'active',
   mobileDisplay: true,
   primaryColor: '#6366f1',
-  dockedPosition: 'right',
+  dockedPosition: 'left',
   models: [{
     path: '/live2d/frieren/Frieren.model3.json',
     scale: 0.055,
     position: [0, 40],
-    stageStyle: { width: 320, height: 520 },
+    stageStyle: { width: 320, height: 520, bottom: '76px' },
     mobileScale: 0.03,
-    mobileStageStyle: { width: 160, height: 300 }
+    mobileStageStyle: { width: 160, height: 300, bottom: '56px' }
   }],
   menus: {
-    items: (defaultItems) => defaultItems.filter(item => item.id !== 'About')
+    items: (defaultItems) => defaultItems.filter(item => item.id !== 'About'),
+    style: { bottom: '170px' },
+    mobileStyle: { bottom: '55%' }
   },
   tips: {
     messageLine: 3,

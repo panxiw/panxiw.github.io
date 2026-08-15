@@ -10,13 +10,13 @@
   btn.id = 'bg-toggle';
   btn.type = 'button';
   btn.title = '背景模式：隐藏文章看壁纸';
-  btn.textContent = '🖼️';
+  btn.innerHTML = '<i class="fas fa-image"></i>';
   btn.setAttribute('aria-label', '背景模式开关');
   document.body.appendChild(btn);
 
   const apply = () => {
     const on = document.body.classList.contains('bg-mode');
-    btn.textContent = on ? '✖' : '🖼️';
+    btn.innerHTML = on ? '<i class="fas fa-times"></i>' : '<i class="fas fa-image"></i>';
     btn.title = on ? '退出背景模式' : '背景模式：隐藏文章看壁纸';
     btn.classList.toggle('active', on);
   };
