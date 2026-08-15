@@ -37,7 +37,7 @@ html[data-theme='dark'] body::before {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: rgba(9, 13, 11, .82);
+  background: rgba(7, 10, 9, .88);
   pointer-events: none;
 }
 
@@ -50,7 +50,8 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background: url('../img/magic-circle-outer.svg') center/80vmin no-repeat;
-  opacity: calc(.14 + var(--circle-glow, 0) * .18);
+  opacity: calc(.24 + var(--circle-glow, 0) * .20);
+  filter: drop-shadow(0 0 6px rgba(201, 162, 39, .30));
   animation: magic-spin-cw 240s linear infinite;
   transition: filter 2.5s ease;
 }
@@ -64,7 +65,8 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background: url('../img/magic-circle-inner.svg') center/80vmin no-repeat;
-  opacity: calc(.16 + var(--circle-glow, 0) * .20);
+  opacity: calc(.28 + var(--circle-glow, 0) * .22);
+  filter: drop-shadow(0 0 6px rgba(201, 162, 39, .32));
   animation: magic-spin-ccw 180s linear infinite;
   transition: filter 2.5s ease;
 }
@@ -294,7 +296,7 @@ html.js .article-sort-item {
 /* ---------- 魔法阵激活：暗金慢慢变亮金，如水流动 ---------- */
 body.magic-on::after,
 body.magic-on #magic-inner {
-  filter: sepia(.55) saturate(2.4) brightness(1.42) hue-rotate(-10deg);
+  filter: drop-shadow(0 0 14px rgba(233, 196, 106, .65)) sepia(.5) saturate(2.3) brightness(1.45) hue-rotate(-10deg);
 }
 body.magic-on #magic-glow {
   opacity: 1;
