@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>12档调光密度计调试笔记</title>
+      <link href="/2026/03/11/12%E6%A1%A3%E8%B0%83%E5%85%89%E5%AF%86%E5%BA%A6%E8%AE%A1%E8%B0%83%E8%AF%95%E7%AC%94%E8%AE%B0/"/>
+      <url>/2026/03/11/12%E6%A1%A3%E8%B0%83%E5%85%89%E5%AF%86%E5%BA%A6%E8%AE%A1%E8%B0%83%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ADL5303ACPZ-R7损坏"><a href="#ADL5303ACPZ-R7损坏" class="headerlink" title="ADL5303ACPZ-R7损坏"></a>ADL5303ACPZ-R7损坏</h1><p>检查C57两端电压为0V，应为0.5V，故</p><h1 id="OPA704UA损坏"><a href="#OPA704UA损坏" class="headerlink" title="OPA704UA损坏"></a>OPA704UA损坏</h1><p>电压跟随器输出和输出电压不相等，芯片损坏</p><h1 id="ADS8866读数为0"><a href="#ADS8866读数为0" class="headerlink" title="ADS8866读数为0"></a>ADS8866读数为0</h1><p>前天ADC读数正常，今天ADC读数一直为0</p><p>芯片使用三线通信，查阅数据手册需将DIN拉高</p><p><img src="/images/%E4%B8%89%E7%BA%BF.png" alt="三线"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 调试笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>网站构建教程</title>
+      <link href="/2026/03/06/%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%95%99%E7%A8%8B/"/>
+      <url>/2026/03/06/%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、网站构建教程链接"><a href="#一、网站构建教程链接" class="headerlink" title="一、网站构建教程链接"></a>一、网站构建教程链接</h2><p><a href="https://www.xmdblog.com/posts/70db7d7c.html">Hexo博客搭建教程 | 小明的部落格</a></p><p><a href="https://www.bilibili.com/video/BV1URwNetEQ8/?spm_id_from=333.337.search-card.all.click&vd_source=a2bd46666ede2f3c876012e01f63ef09">【教程】Hexo个人博客搭建教程_哔哩哔哩_bilibili</a></p><p>推荐<a href="https://www.fomal.cc/posts/3451f874.html">Hexo博客搭建基础教程(三) | Fomalhaut🥝</a></p><p>友情链接在这里找到的<a href="https://chuchendjs.github.io/posts/13244/#%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7">butterfly主题 | 初辰の揽月</a></p><p><a href="https://blog.csdn.net/2301_77285173/article/details/130189857">在hexo博客中插入图片的方法_hexo插入图片-CSDN博客</a></p><p>善用AI</p><h2 id="二、注意事项"><a href="#二、注意事项" class="headerlink" title="二、注意事项"></a>二、注意事项</h2><p>在vercel上部署个人域名时，不要挂梯子</p><p>使用butterfly主题，当你想修改网站配置时，需要修改_config.butterfly.yml</p><h2 id="三、网站更新命令"><a href="#三、网站更新命令" class="headerlink" title="三、网站更新命令"></a>三、网站更新命令</h2><h3 id="1、本地预览"><a href="#1、本地预览" class="headerlink" title="1、本地预览"></a>1、本地预览</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl; hexo g; hexo s</span><br></pre></td></tr></table></figure><h3 id="2、部署Github"><a href="#2、部署Github" class="headerlink" title="2、部署Github"></a>2、部署Github</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl; hexo g; hexo d</span><br></pre></td></tr></table></figure><h3 id="3、Vercel也要点击一下部署"><a href="#3、Vercel也要点击一下部署" class="headerlink" title="3、Vercel也要点击一下部署"></a>3、Vercel也要点击一下部署</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 网站搭建 </tag>
+            
+            <tag> 博客教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2026/03/05/hello-world/"/>
+      <url>/2026/03/05/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
