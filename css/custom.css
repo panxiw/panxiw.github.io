@@ -136,3 +136,41 @@ html[data-theme='dark'] .layout_page .page {
 html[data-theme='dark'] #footer {
   border-top-color: rgba(255, 255, 255, .08);
 }
+
+/* ---------- 背景模式开关（隐藏文章看壁纸） ---------- */
+#bg-toggle {
+  position: fixed;
+  left: 16px;
+  bottom: 84px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 102, 241, .45);
+  background: rgba(255, 255, 255, .78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(31, 38, 135, .18);
+  transition: transform .25s ease, background .25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#bg-toggle:hover { transform: scale(1.12) rotate(8deg); }
+#bg-toggle.active { background: rgba(99, 102, 241, .85); }
+html[data-theme='dark'] #bg-toggle {
+  background: rgba(24, 30, 56, .75);
+  border-color: rgba(129, 140, 248, .45);
+}
+html[data-theme='dark'] #bg-toggle.active { background: rgba(99, 102, 241, .8); }
+
+/* 背景模式：隐藏文章、侧栏、页脚、右侧按钮，只留壁纸 */
+body.bg-mode #page-header,
+body.bg-mode #content-inner,
+body.bg-mode #footer,
+body.bg-mode #rightside {
+  display: none !important;
+}
