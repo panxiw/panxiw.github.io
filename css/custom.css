@@ -3,28 +3,33 @@
    极光背景 · 毛玻璃卡片 · 渐变霓虹标题 · 悬浮动效 · 鼠标光晕
    ========================================================= */
 
-/* ---------- 极光渐变背景（纯 CSS 动画） ---------- */
-body {
+/* ---------- 壁纸背景（直接钉在 body 上，防主题白底遮挡） ---------- */
+html {
   background: transparent !important;
 }
-#aurora-bg {
+body {
+  background: #eef2ff url('../img/frieren-fern.jpg') center/cover no-repeat fixed !important;
+}
+/* 首页：龙壁纸 */
+body.home {
+  background-image: url('../img/dragon.jpg') !important;
+}
+/* 深色模式：暗色遮罩保证可读性 */
+html[data-theme='dark'] body::before {
+  content: '';
   position: fixed;
   inset: 0;
   z-index: -2;
+  background: rgba(0, 0, 0, .45);
+  pointer-events: none;
+}
+/* 极光光斑层（透明底，只保留漂移光斑） */
+#aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   overflow: hidden;
-  background: url('../img/frieren-fern.jpg') center/cover no-repeat fixed;
-}
-/* 首页：龙壁纸 */
-#aurora-bg.home {
-  background-image: url('../img/dragon.jpg');
-}
-html[data-theme='dark'] #aurora-bg {
-  background: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
-              url('../img/frieren-fern.jpg') center/cover no-repeat fixed;
-}
-html[data-theme='dark'] #aurora-bg.home {
-  background-image: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
-                    url('../img/dragon.jpg');
+  background: transparent;
 }
 #aurora-bg::before,
 #aurora-bg::after {
