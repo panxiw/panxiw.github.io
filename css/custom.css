@@ -137,11 +137,14 @@ html[data-theme='dark'] #footer {
   border-top-color: rgba(255, 255, 255, .08);
 }
 
+/* 设置按钮整体上移一格，给看壁纸按钮让位 */
+#rightside { bottom: 80px !important; }
+
 /* ---------- 背景模式开关（右侧设置同款风格） ---------- */
 #bg-toggle {
   position: fixed;
   right: 8px;
-  bottom: 200px;
+  bottom: 40px;
   z-index: 100;
   display: block;
   width: 35px;
