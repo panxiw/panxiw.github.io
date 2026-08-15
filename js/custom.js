@@ -32,11 +32,30 @@
   if (on) document.body.classList.add('bg-mode');
   apply();
 
-  // ---- 魔法阵觉醒：三层内圈(核心/符文/星纹，反向同步旋转) + 金色流光层 + 滚动进度 ----
-  ['magic-a', 'magic-b', 'magic-c'].forEach(id => {
+  // ---- 魔法阵觉醒：四层同心(核心/符文/星纹/外圈) + 金色氛围 + 流光层 ----
+  // 先放金色氛围层（DOM 顺序在圆环之前 → 绘制在下层）
+  const vignette = document.createElement('div');
+  vignette.id = 'magic-vignette';
+  document.body.appendChild(vignette);
+  // 四层内联 SVG：拉取源文件，渐变 id 唯一化后注入，颜色由 CSS 变量 --g1/--g2 驱动
+  const bands = [
+    { id: 'magic-a', file: 'magic-circle-band-a.svg' },
+    { id: 'magic-b', file: 'magic-circle-band-b.svg' },
+    { id: 'magic-c', file: 'magic-circle-band-c.svg' },
+    { id: 'magic-d', file: 'magic-circle-band-d.svg' },
+  ];
+  bands.forEach(b => {
     const el = document.createElement('div');
-    el.id = id;
+    el.id = b.id;
     document.body.appendChild(el);
+    fetch('/img/' + b.file)
+      .then(r => r.text())
+      .then(svg => {
+        const uid = 'gold-' + b.id.slice(-1);
+        svg = svg.replace(/id="gold"/g, 'id="' + uid + '"').replace(/url\(#gold\)/g, 'url(#' + uid + ')');
+        el.innerHTML = svg;
+      })
+      .catch(() => { /* 拉取失败则此层不显示，不影响其余 */ });
   });
 
   // ---- 魔法阵激活开关（暗金沉睡 / 亮金流动） ----

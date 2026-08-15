@@ -34,7 +34,7 @@ html:not([data-theme='dark']) body::before {
   transition: background 2.8s ease;
 }
 html:not([data-theme='dark']) body.magic-on::before {
-  background: radial-gradient(ellipse at 50% 45%, rgba(233, 214, 168, .90) 0%, rgba(222, 196, 142, .92) 60%, rgba(214, 186, 132, .94) 100%);
+  background: rgba(226, 204, 156, .92);
 }
 html[data-theme='dark'] body::before {
   content: '';
@@ -47,7 +47,7 @@ html[data-theme='dark'] body::before {
 }
 /* 激活魔法阵时：背景压暗成暗金夜色（不是纯黑，带金调） */
 html[data-theme='dark'] body.magic-on::before {
-  background: radial-gradient(ellipse at 50% 45%, rgba(48, 34, 12, .86) 0%, rgba(22, 15, 6, .93) 55%, rgba(9, 7, 4, .97) 100%);
+  background: rgba(26, 19, 6, .95);
 }
 
 /* ---------- 沉睡魔法阵（内联 SVG 四层同心，颜色过渡觉醒） ---------- */
@@ -101,9 +101,9 @@ body.magic-on #magic-a,
 body.magic-on #magic-b,
 body.magic-on #magic-c,
 body.magic-on #magic-d {
-  --g1: #e9b84a;
-  --g2: #f7d477;
-  filter: drop-shadow(0 0 4px rgba(242, 204, 112, .55)) drop-shadow(0 0 16px rgba(233, 196, 106, .20));
+  --g1: #e2a83c;
+  --g2: #ffe9a3;
+  filter: drop-shadow(0 0 10px rgba(233, 196, 106, .45));
 }
 body.magic-on #magic-a svg,
 body.magic-on #magic-b svg,
@@ -116,7 +116,7 @@ body.magic-on #magic-c svg {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 45%, rgba(233, 196, 106, .18) 0%, rgba(150, 112, 34, .12) 40%, transparent 72%);
+  background: radial-gradient(ellipse at 50% 45%, rgba(233, 196, 106, .26) 0%, rgba(150, 112, 34, .16) 40%, transparent 72%);
   opacity: 0;
   transition: opacity 3s ease;
 }
@@ -350,7 +350,7 @@ body.magic-on #magic-glow {
 }
 body.magic-on .magic-glow-spin {
   animation-duration: 3.5s;
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(233, 196, 106, .38) 70deg, transparent 140deg, transparent 360deg);
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(233, 196, 106, .50) 70deg, transparent 140deg, transparent 360deg);
 }
 
 
