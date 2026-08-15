@@ -32,7 +32,35 @@
   if (on) document.body.classList.add('bg-mode');
   apply();
 
-  // ---- 魔法阵觉醒：金色流光层 + 滚动进度 ----
+  // ---- 魔法阵觉醒：内圈(反向旋转) + 金色流光层 + 滚动进度 ----
+  const inner = document.createElement('div');
+  inner.id = 'magic-inner';
+  document.body.appendChild(inner);
+
+  // ---- 魔法阵激活开关（暗金沉睡 / 亮金流动） ----
+  const MAGIC_KEY = 'magic-on';
+  const mbtn = document.createElement('button');
+  mbtn.id = 'magic-toggle';
+  mbtn.type = 'button';
+  mbtn.title = '激活魔法阵';
+  mbtn.innerHTML = '<i class="fas fa-circle-notch"></i>';
+  mbtn.setAttribute('aria-label', '魔法阵激活开关');
+  document.body.appendChild(mbtn);
+  const mapply = () => {
+    const on = document.body.classList.contains('magic-on');
+    mbtn.title = on ? '让魔法阵沉睡' : '激活魔法阵';
+    mbtn.classList.toggle('active', on);
+  };
+  mbtn.addEventListener('click', () => {
+    document.body.classList.toggle('magic-on');
+    try { localStorage.setItem(MAGIC_KEY, document.body.classList.contains('magic-on') ? '1' : '0'); } catch (e) {}
+    mapply();
+  });
+  let mon = false;
+  try { mon = localStorage.getItem(MAGIC_KEY) === '1'; } catch (e) {}
+  if (mon) document.body.classList.add('magic-on');
+  mapply();
+
   const glow = document.createElement('div');
   glow.id = 'magic-glow';
   const spin = document.createElement('div');

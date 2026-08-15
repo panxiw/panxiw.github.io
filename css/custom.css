@@ -42,18 +42,34 @@ html[data-theme='dark'] body::before {
 }
 
 /* ---------- 沉睡魔法阵（背景线稿，极慢旋转） ---------- */
+/* 外圈魔法阵：顺时针缓转 */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url('../img/magic-circle.svg') center/80vmin no-repeat;
-  opacity: calc(.13 + var(--circle-glow, 0) * .16);
-  animation: magic-spin 240s linear infinite;
+  background: url('../img/magic-circle-outer.svg') center/80vmin no-repeat;
+  opacity: calc(.14 + var(--circle-glow, 0) * .18);
+  animation: magic-spin-cw 240s linear infinite;
+  transition: filter 2.5s ease;
 }
-@keyframes magic-spin {
+@keyframes magic-spin-cw {
   to { transform: rotate(360deg); }
+}
+/* 内圈魔法阵：逆时针反转 */
+#magic-inner {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('../img/magic-circle-inner.svg') center/80vmin no-repeat;
+  opacity: calc(.16 + var(--circle-glow, 0) * .20);
+  animation: magic-spin-ccw 180s linear infinite;
+  transition: filter 2.5s ease;
+}
+@keyframes magic-spin-ccw {
+  to { transform: rotate(-360deg); }
 }
 
 /* ---------- 衬线标题（书卷气） ---------- */
@@ -207,6 +223,42 @@ html[data-theme='dark'] #footer {
 }
 #bg-toggle.active { color: #c9a227; }
 
+/* ---------- 魔法阵激活开关 ---------- */
+#magic-toggle {
+  position: fixed;
+  right: 10px;
+  bottom: 5px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  text-align: center;
+  font-size: 15px;
+  line-height: 1;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#magic-toggle:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15), 0 0 14px rgba(233, 196, 106, .25);
+  -webkit-transform: translateY(-1px) scale(1.02);
+  transform: translateY(-1px) scale(1.02);
+}
+#magic-toggle.active {
+  color: #e9c46a;
+  box-shadow: 0 0 14px rgba(233, 196, 106, .35);
+}
+#magic-toggle.active i {
+  animation: magic-flow 2.5s linear infinite;
+}
+
 /* 设置按钮整体上移一格，给看壁纸按钮让位 */
 #rightside { bottom: 80px !important; }
 
@@ -239,6 +291,22 @@ html.js .article-sort-item {
   100% { box-shadow: 0 10px 34px rgba(0, 0, 0, .42), 0 0 10px rgba(233, 196, 106, .06); }
 }
 
+/* ---------- 魔法阵激活：暗金慢慢变亮金，如水流动 ---------- */
+body.magic-on::after,
+body.magic-on #magic-inner {
+  filter: sepia(.55) saturate(2.4) brightness(1.42) hue-rotate(-10deg);
+}
+body.magic-on #magic-glow {
+  opacity: 1;
+}
+body.magic-on .magic-glow-spin {
+  animation-duration: 3.5s;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(233, 196, 106, .50) 70deg, transparent 140deg, transparent 360deg);
+}
+body.magic-on #magic-inner {
+  animation-duration: 90s;
+}
+
 /* ---------- 金色流光：沿魔法阵纹路游走（随滚动点亮） ---------- */
 #magic-glow {
   position: fixed;
@@ -265,9 +333,9 @@ html.js .article-sort-item {
 
 /* ---------- 回到顶部：魔法阵进度环（随滚动点亮） ---------- */
 #go-up {
-  width: 44px !important;
-  height: 44px !important;
-  line-height: 44px !important;
+  width: 35px !important;
+  height: 35px !important;
+  line-height: 35px !important;
   border-radius: 50% !important;
   background:
     radial-gradient(circle, var(--btn-bg) 55%, transparent 58%),
