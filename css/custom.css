@@ -1,9 +1,21 @@
 /* =========================================================
-   云苏葛的小站 · 炫酷自定义样式 (custom.css)
-   极光背景 · 毛玻璃卡片 · 渐变霓虹标题 · 悬浮动效 · 鼠标光晕
+   云苏葛的小站 · 史诗奇幻定制样式 (custom.css)
+   沉睡魔法阵 · 暗金刻线 · 唤醒辉光 · 衬线书卷气
    ========================================================= */
 
-/* ---------- 壁纸背景（直接钉在 body 上，防主题白底遮挡） ---------- */
+/* ---------- 字体：Cormorant Garamond (英文衬线) ---------- */
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5.3.0/600.css');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5.3.0/500.css');
+
+:root {
+  --gold-dormant: #8f7a4d;   /* 暗金：沉睡刻线 */
+  --gold-dim: #b08d57;       /* 古金：次级 */
+  --gold-awake: #e9c46a;     /* 亮金：觉醒 */
+  --gold-line: rgba(176, 141, 87, .38);
+  --serif: 'Cormorant Garamond', 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+}
+
+/* ---------- 壁纸背景（直接钉在 body 上） ---------- */
 html {
   background: transparent !important;
 }
@@ -11,19 +23,61 @@ body {
   background: #eef2ff url('../img/frieren-fern.jpg') center/cover no-repeat fixed !important;
 }
 
-/* 深色模式：暗色遮罩保证可读性 */
+/* 背景色调：浅色=暖象牙，深色=墨绿黑夜 */
+html:not([data-theme='dark']) body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: rgba(243, 236, 221, .72);
+  pointer-events: none;
+}
 html[data-theme='dark'] body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: rgba(0, 0, 0, .45);
+  background: rgba(9, 13, 11, .82);
   pointer-events: none;
 }
-to   { transform: translate(7vmax, 5vmax) scale(1.18) rotate(12deg); }
+
+/* ---------- 沉睡魔法阵（背景线稿，极慢旋转） ---------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('../img/magic-circle.svg') center/80vmin no-repeat;
+  opacity: .10;
+  animation: magic-spin 240s linear infinite;
+}
+@keyframes magic-spin {
+  to { transform: rotate(360deg); }
 }
 
-/* ---------- 毛玻璃卡片 ---------- */
+/* ---------- 衬线标题（书卷气） ---------- */
+#site-title,
+#site-subtitle {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: .10em;
+  color: var(--gold-dim) !important;
+  text-shadow: 0 0 30px rgba(201, 162, 39, .30);
+}
+html:not([data-theme='dark']) #site-title,
+html:not([data-theme='dark']) #site-subtitle {
+  color: #8a6d3b !important;
+  text-shadow: none;
+}
+.recent-post-info .article-title,
+.layout_post h1, .layout_post h2, .layout_post h3, .layout_post h4,
+#page h1, #page h2, #page h3, #page h4,
+.aside-content .card-widget .card-title {
+  font-family: var(--serif);
+}
+
+/* ---------- 卡片：暗金刻线（浅色=暖象牙玻璃，深色=墨玉玻璃） ---------- */
 #recent-posts .recent-post-item,
 .aside-content .card-widget,
 .layout_post > article,
@@ -31,11 +85,11 @@ to   { transform: translate(7vmax, 5vmax) scale(1.18) rotate(12deg); }
 .article-sort-item,
 #footer,
 .layout_page .page {
-  background: rgba(255, 255, 255, .68) !important;
+  background: rgba(250, 246, 236, .80) !important;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, .55);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, .10);
+  border: 1px solid var(--gold-line);
+  box-shadow: 0 6px 24px rgba(64, 54, 32, .10);
 }
 html[data-theme='dark'] #recent-posts .recent-post-item,
 html[data-theme='dark'] .aside-content .card-widget,
@@ -44,53 +98,28 @@ html[data-theme='dark'] #page .page,
 html[data-theme='dark'] .article-sort-item,
 html[data-theme='dark'] #footer,
 html[data-theme='dark'] .layout_page .page {
-  background: rgba(16, 21, 43, .60) !important;
-  border-color: rgba(255, 255, 255, .10);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, .35);
+  background: rgba(16, 21, 17, .74) !important;
+  border-color: rgba(143, 122, 77, .38);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .42);
 }
 
-/* ---------- 卡片悬浮抬升动效 ---------- */
+/* 悬停觉醒：暗金刻线 → 亮金辉光 */
 #recent-posts .recent-post-item,
 .aside-content .card-widget {
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
 }
 #recent-posts .recent-post-item:hover,
 .aside-content .card-widget:hover {
-  transform: translateY(-5px);
-  border-color: rgba(99, 102, 241, .45) !important;
-  box-shadow: 0 14px 40px rgba(99, 102, 241, .18) !important;
+  transform: translateY(-4px);
+  border-color: rgba(233, 196, 106, .85) !important;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, .28), 0 0 22px rgba(233, 196, 106, .16) !important;
+}
+html[data-theme='dark'] #recent-posts .recent-post-item:hover,
+html[data-theme='dark'] .aside-content .card-widget:hover {
+  box-shadow: 0 10px 34px rgba(0, 0, 0, .5), 0 0 24px rgba(233, 196, 106, .18) !important;
 }
 
-/* ---------- 渐变霓虹标题（动画流光） ---------- */
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  #site-title,
-  #site-subtitle {
-    background: linear-gradient(90deg, #6366f1, #38bdf8, #f472b6, #6366f1);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent !important;
-    animation: gradient-shift 10s linear infinite;
-  }
-  html[data-theme='dark'] #site-title,
-  html[data-theme='dark'] #site-subtitle {
-    background: linear-gradient(90deg, #818cf8, #38bdf8, #f9a8d4, #818cf8);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  .recent-post-info .article-title:hover {
-    background: linear-gradient(90deg, #6366f1, #0ea5e9);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent !important;
-  }
-}
-@keyframes gradient-shift {
-  to { background-position: 300% 0; }
-}
-
-/* ---------- 导航菜单下划线动画 ---------- */
+/* ---------- 导航菜单下划线：暗金渐变 ---------- */
 #nav .menus_item a {
   position: relative;
 }
@@ -102,7 +131,7 @@ html[data-theme='dark'] .layout_page .page {
   width: 100%;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #6366f1, #38bdf8);
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold-awake));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .25s ease;
@@ -111,34 +140,31 @@ html[data-theme='dark'] .layout_page .page {
   transform: scaleX(1);
 }
 
-/* ---------- 渐变滚动条 ---------- */
+/* ---------- 滚动条：暗金渐变 ---------- */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1, #38bdf8);
+  background: linear-gradient(180deg, var(--gold-dormant), var(--gold-awake));
   border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* ---------- 选中文字 ---------- */
+/* ---------- 选中文字：鎏金 ---------- */
 ::selection {
-  background: rgba(99, 102, 241, .25);
+  background: rgba(201, 162, 39, .32);
 }
 
 /* ---------- 页脚顶部分隔线 ---------- */
 #footer {
-  border-top: 1px solid rgba(255, 255, 255, .4);
+  border-top: 1px solid rgba(176, 141, 87, .35);
 }
 html[data-theme='dark'] #footer {
-  border-top-color: rgba(255, 255, 255, .08);
+  border-top-color: rgba(176, 141, 87, .22);
 }
-
-/* 设置按钮整体上移一格，给看壁纸按钮让位 */
-#rightside { bottom: 80px !important; }
 
 /* ---------- 背景模式开关（右侧设置同款风格） ---------- */
 #bg-toggle {
@@ -171,7 +197,7 @@ html[data-theme='dark'] #footer {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 #bg-toggle:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15), 0 0 14px rgba(233, 196, 106, .25);
   -webkit-transform: translateY(-1px) scale(1.02);
   transform: translateY(-1px) scale(1.02);
 }
@@ -179,16 +205,12 @@ html[data-theme='dark'] #footer {
   -webkit-animation: buttonIconBounce 0.6s ease-in-out;
   animation: buttonIconBounce 0.6s ease-in-out;
 }
-#bg-toggle.active { color: var(--btn-hover-color); }
+#bg-toggle.active { color: #c9a227; }
+
+/* 设置按钮整体上移一格，给看壁纸按钮让位 */
+#rightside { bottom: 80px !important; }
 
 /* 背景模式：隐藏文章、侧栏、页脚、右侧按钮，只留壁纸 */
-body.bg-mode #page-header,
-body.bg-mode #content-inner,
-body.bg-mode #footer,
-body.bg-mode #rightside {
-  display: none !important;
-}
-
 body.bg-mode #page-header,
 body.bg-mode #content-inner,
 body.bg-mode #footer,

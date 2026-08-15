@@ -2,7 +2,7 @@
 OML2D.loadOml2d({
   initialStatus: 'active',
   mobileDisplay: true,
-  primaryColor: '#6366f1',
+  primaryColor: '#b08d57',
   dockedPosition: 'left',
   models: [{
     path: '/live2d/frieren/Frieren.model3.json',
@@ -24,8 +24,8 @@ OML2D.loadOml2d({
       background: 'rgba(255,255,255,.88)',
       color: '#333',
       borderRadius: '10px',
-      border: '1px solid rgba(99,102,241,.35)',
-      boxShadow: '0 8px 32px rgba(31,38,135,.15)',
+      border: '1px solid rgba(176,141,87,.45)',
+      boxShadow: '0 8px 32px rgba(64,54,32,.18)',
       backdropFilter: 'blur(8px)',
       fontSize: '14px'
     },
