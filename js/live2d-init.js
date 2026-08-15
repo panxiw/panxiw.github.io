@@ -12,6 +12,9 @@ OML2D.loadOml2d({
     mobileScale: 0.03,
     mobileStageStyle: { width: 160, height: 300 }
   }],
+  menus: {
+    items: (defaultItems) => defaultItems.filter(item => item.id !== 'About')
+  },
   tips: {
     messageLine: 3,
     style: {
